@@ -1,16 +1,30 @@
 {
   "name": "provision-vm",
   "version": "1.0.0",
-  "description": "",
+  "description": "Cloud Function to provision virtual machines for Unnati Cloud Labs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "functions-framework --target=provisionVM",
+    "deploy": "gcloud functions deploy provisionVM --runtime nodejs16 --trigger-http --allow-unauthenticated",
+    "test": "jest"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Unnati Cloud Labs",
+  "license": "MIT",
   "dependencies": {
-    "@google-cloud/compute": "^5.1.0",
-    "@google-cloud/functions-framework": "^3.5.1"
+    "@google-cloud/compute": "^3.8.1",
+    "@google-cloud/functions-framework": "^3.1.0",
+    "@google-cloud/secret-manager": "^4.2.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/jest": "^29.5.1",
+    "@types/node": "^18.16.3",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.4"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
